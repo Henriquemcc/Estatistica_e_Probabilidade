@@ -25,7 +25,7 @@ def calcular_mediana(amostra: list):
     else:
         posicao_mediana_esquerda = int(math.floor((len(amostra) + 1) / 2))
         posicao_mediana_direita = int(math.ceil((len(amostra) + 1) / 2))
-        mediana = (amostra[posicao_mediana_esquerda - 1] + amostra[posicao_mediana_direita]) / 2
+        mediana = (amostra[posicao_mediana_esquerda - 1] + amostra[posicao_mediana_direita - 1]) / 2
     return mediana
 
 
