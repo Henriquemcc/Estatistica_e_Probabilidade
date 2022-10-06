@@ -1,5 +1,9 @@
 import math
 
 
-def funcao_de_probabilidade_binomial(k: float, n: int, p: float):
-    return math.comb(n, k) * math.pow(p, k) * math.pow((1 - p), (n - k))
+def funcao_variavel_aleatoria_distribuicao_binomial(n, p, x):
+    return math.comb(n, x) * math.pow(p, x) * math.pow((1 - p), (n - x))
+
+
+def funcao_variavel_aleatoria_distribuicao_hipergeometrica(N, A, n, x):
+    return math.comb(A, x) * math.comb(N - A, n - x) / math.comb(N, n)
