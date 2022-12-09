@@ -48,3 +48,15 @@ class Test(TestCase):
         y = [48, 50, 56, 52, 43, 60, 62, 58, 64, 72]
         correlacao = regressao.calcular_correlacao_simples(x, y)
         self.assertEqual(round(correlacao, 4), 0.8768)
+
+    def test_calcular_b_um(self):
+        x = [2, 3, 4, 5, 4, 6, 7, 8, 8, 10]
+        y = [48, 50, 56, 52, 43, 60, 62, 58, 64, 72]
+        b_um = regressao.calcular_b_um(x, y)
+        self.assertEqual(round(b_um, 4), 2.9518)
+
+    def test_calcular_b_zero(self):
+        x = [2, 3, 4, 5, 4, 6, 7, 8, 8, 10]
+        y = [48, 50, 56, 52, 43, 60, 62, 58, 64, 72]
+        b_zero = regressao.calcular_b_zero(x, y)
+        self.assertEqual(round(b_zero, 4), 39.6747)

@@ -1,4 +1,5 @@
 import math
+import tendencia
 
 
 def calcular_somatorio(x: list):
@@ -91,3 +92,52 @@ def calcular_correlacao_simples(x: list, y: list):
     syy = calcular_sxx_ou_syy(y)
 
     return sxy / math.sqrt(sxx * syy)
+
+
+def calcular_b_um(x: list, y: list):
+    """
+    Calcula o valor da variável de regressão 𝛽1.
+    :param x: Lista X.
+    :param y: Lista Y.
+    :return: Valor da variável de regressão 𝛽1.
+    """
+    if len(x) != len(y):
+        raise "As listas possuem tamanhos diferentes"
+
+    sxy = calcular_sxy(x, y)
+    sxx = calcular_sxx_ou_syy(x)
+
+    return sxy / sxx
+
+
+def calcular_b_zero(x: list, y: list):
+    """
+    Calcula o valor da veriável de regressão 𝛽0.
+    :param x: Lista X.
+    :param y: Lista Y.
+    :return: Valor da variável de regressão 𝛽0.
+    """
+    if len(x) != len(y):
+        raise "As listas possuem tamanhos diferentes"
+
+    media_y = tendencia.calcular_media(y)
+    media_x = tendencia.calcular_media(x)
+    b_um = calcular_b_um(x, y)
+
+    return media_y - b_um * media_x
+
+
+def calcular_equacao_da_reta(x: list, y: list):
+    """
+    Calcula a equação da reta.
+    :param x: Lista X.
+    :param y: Lista Y.
+    :return: String com a equação da reta.
+    """
+    if len(x) != len(y):
+        raise "As listas possuem tamanhos diferentes"
+
+    b_zero = calcular_b_zero(x, y)
+    b_um = calcular_b_um(x, y)
+
+    return "y = {} + {}𝑥 + 𝜀".format(b_zero, b_um)
